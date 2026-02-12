@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+log.txt
+sms_log.txt
+.db
 # C extensions
 *.so
 
