@@ -6,6 +6,7 @@ __pycache__/
 log.txt
 sms_log.txt
 *.db
+
 # C extensions
 *.so
 
