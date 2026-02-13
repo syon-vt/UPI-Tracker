@@ -6,8 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    {% for value in values %}
-        <p>{{ value['date'] }}</p>
-    {% endfor %}
+    <h1>Transactions</h1>
+    <table border="1">
+        <tr>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Person</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction[0] }}</td>
+            <td>{{ transaction[1] }}</td>
+            <td>{{ transaction[2] }}</td>
+            <td>{{ transaction[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
