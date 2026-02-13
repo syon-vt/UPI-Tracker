@@ -1,0 +1,26 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 8px;
+  border-collapse: collapse;
+}
+
+.table-container {
+    display: flex;
+    justify-content: space-around; /* Adds space around the tables */
+    gap: 20px; /* Adds a gap between the tables (modern alternative to margin) */
+}
+
+.table-wrapper {
+    flex: 1; /* Makes both wrappers take up equal space */
+    box-sizing: border-box; /* Ensures padding/border are included in the width calculation */
+}
+

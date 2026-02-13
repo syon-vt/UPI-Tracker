@@ -3,25 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Transcation Home</title>
 </head>
 <body>
-    <h1>Transactions</h1>
-    <table border="1">
-        <tr>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Person</th>
-            <th>Timestamp</th>
-        </tr>
-        {% for transaction in transactions %}
-        <tr>
-            <td>{{ transaction[0] }}</td>
-            <td>{{ transaction[1] }}</td>
-            <td>{{ transaction[2] }}</td>
-            <td>{{ transaction[3] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-container">
+        <div class="table-wrapper">
+        <h1>Debit</h1>
+            <table border="1">
+                <tr>
+                    <th>Amount</th>
+                    <th>Person</th>
+                    <th>Timestamp</th>
+                </tr>
+                {% for transaction in transactions %}
+                {% if transaction[0] == 'debit' %}
+                <tr>
+                    <td>{{ transaction[1] }}</td>
+                    <td>{{ transaction[2] }}</td>
+                    <td>{{ transaction[3] }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+            <h2>Total Debit: {{ totalDebit }}</h2>
+        </div>
+        <div class="table-wrapper">
+            <h1>Credit</h1>
+            <table border="1">
+                <tr>
+                    <th>Amount</th>
+                    <th>Person</th>
+                    <th>Timestamp</th>
+                </tr>
+                {% for transaction in transactions %}
+                {% if transaction[0] == 'credit' %}
+                <tr>
+                    <td>{{ transaction[1] }}</td>
+                    <td>{{ transaction[2] }}</td>
+                    <td>{{ transaction[3] }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+
+            <h2>Total Credit: {{ totalCredit }}</h2>
+        </div>
+
+    </div> 
+    {% if totalDebit>totalCredit %}
+    <h2 style="color: red;">Net Expenditure: {{ totalCredit - totalDebit }}</h2>
+    {% else %}
+    <h2 style="color: green;">Net Expenditure: {{ totalCredit - totalDebit }}</h2>
+    {% endif %}
+
 </body>
 </html>

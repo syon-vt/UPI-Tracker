@@ -51,7 +51,16 @@ def index():
         cur = conn.cursor()
         cur.execute("SELECT type, amount, person, timestamp FROM transactions")
         transactions = cur.fetchall()
-    return render_template('index.html', transactions=transactions)
+
+    totalDebit = 0
+    totalCredit = 0
+    for i in range(len(transactions)):
+        if transactions[i][0] == 'debit':
+            totalDebit+=transactions[i][1]
+        else:
+            totalCredit+=transactions[i][1]
+            
+    return render_template('index.html', transactions=transactions, totalDebit=totalDebit, totalCredit=totalCredit)
 
 """if __name__ == '__main__':
     app.run(port=5000, debug=True)"""
